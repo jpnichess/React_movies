@@ -1,12 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* Fontes do Google */
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
-/* Variáveis customizadas */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================
+   🌈 Variáveis customizadas
+   ======================== */
 :root {
   --color-primary: #030014;
   --color-light-100: #cecefb;
@@ -20,19 +22,21 @@
   --background-image-hero-pattern: url("/hero-bg.png");
 }
 
-/* Base */
+/* =============
+   🔤 Base Layer
+   ============= */
 @layer base {
   body {
     font-family: var(--font-dm-sans);
     font-optical-sizing: auto;
-    background: var(--color-primary);
+    background-color: var(--color-primary);
   }
 
-  h1 {
+  .h1 {
     @apply mx-auto max-w-4xl text-center text-5xl font-bold leading-tight tracking-[-1%] text-white sm:text-[64px] sm:leading-[76px];
   }
 
-  h2 {
+  .h2 {
     @apply text-2xl font-bold text-white sm:text-3xl;
   }
 
@@ -42,7 +46,7 @@
   }
 
   header {
-    @apply sm:mt-10 mt-5;
+    @apply mt-5 sm:mt-10;
   }
 
   header img {
@@ -50,7 +54,9 @@
   }
 }
 
-/* Componentes customizados */
+/* =========================
+   🧩 Componentes customizados
+   ========================= */
 @layer components {
   .pattern {
     background-image: var(--background-image-hero-pattern);
@@ -66,7 +72,7 @@
   }
 
   .trending ul {
-    @apply flex flex-row overflow-y-auto gap-5 -mt-10 w-full hide-scrollbar;
+    @apply flex flex-row overflow-x-auto gap-5 -mt-10 w-full hide-scrollbar;
   }
 
   .trending ul li {
@@ -82,7 +88,13 @@
   }
 
   .search {
-    @apply w-full bg-opacity-5 bg-light-100 px-4 py-3 rounded-lg mt-10 max-w-3xl mx-auto;
+    @apply w-full px-4 py-3 rounded-lg mt-10 max-w-3xl mx-auto;
+    background-color: rgba(
+      206,
+      206,
+      251,
+      0.08
+    ); /* Mais controle do que bg-opacity */
   }
 
   .search div {
@@ -94,7 +106,7 @@
   }
 
   .search input {
-    @apply w-full bg-transparent py-2 sm:pr-10 pl-10 text-base text-gray-200 placeholder-light-200 outline-none;
+    @apply w-full bg-transparent py-2 sm:pr-10 pl-10 text-base text-gray-200 placeholder-gray-500 outline-none;
   }
 
   .all-movies {
@@ -102,11 +114,12 @@
   }
 
   .all-movies ul {
-    @apply grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+    @apply grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
   }
 
   .movie-card {
-    @apply bg-dark-100 p-5 rounded-2xl shadow-inner shadow-light-100/10;
+    @apply bg-dark-100 p-5 rounded-2xl shadow-inner;
+    box-shadow: inset 0 2px 4px rgba(206, 206, 251, 0.1); /* rgba do --color-light-100 */
   }
 
   .movie-card img {
@@ -143,7 +156,9 @@
   }
 }
 
-/* Utilitários customizados */
+/* =========================
+   🛠 Utilitários personalizados
+   ========================= */
 @layer utilities {
   .text-gradient {
     @apply bg-gradient-to-r from-[#D6C7FF] to-[#AB8BFF] bg-clip-text text-transparent;
