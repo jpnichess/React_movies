@@ -18,7 +18,7 @@ function MoviePage() {
         style={{ boxShadow: "inset 0 2px 4px rgba(206, 206, 251, 0.1)" }}
       >
         <div
-          className="w-11 h-11 bg-purple-900 bg-dark-100 absolute top-4 left-4 font-extrabold flex items-center justify-center rounded-xl"
+          className="w-11 h-auto bg-purple-900 bg-dark-100 absolute top-4 left-4 font-extrabold flex items-center justify-center rounded-xl"
           style={{
             boxShadow: "inset 0 4px 8px rgba(206, 206, 251, 0.15)",
           }}
