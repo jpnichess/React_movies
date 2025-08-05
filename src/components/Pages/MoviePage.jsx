@@ -42,7 +42,7 @@ function MoviePage() {
             className="rounded-lg h-auto max-w-[25rem] w-full md:w-auto self-start"
             src={
               image
-                ? `https://image.tmdb.org/t/p/w500/${image}`
+                ? `https://image.tmdb.org/t/p/w400/${image}`
                 : "/no-movie.png"
             }
             alt={title}
