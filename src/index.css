@@ -6,9 +6,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ========================
-   🌈 Variáveis customizadas
-   ======================== */
+
 :root {
   --color-primary: #030014;
   --color-light-100: #cecefb;
@@ -22,9 +20,6 @@
   --background-image-hero-pattern: url("/hero-bg.png");
 }
 
-/* =============
-   🔤 Base Layer
-   ============= */
 @layer base {
   body {
     font-family: var(--font-dm-sans);
@@ -54,9 +49,7 @@
   }
 }
 
-/* =========================
-   🧩 Componentes customizados
-   ========================= */
+
 @layer components {
   .pattern {
     background-image: var(--background-image-hero-pattern);
@@ -118,8 +111,8 @@
   }
 
   .movie-card {
-    @apply bg-dark-100 p-5 rounded-2xl shadow-inner;
-    box-shadow: inset 0 2px 4px rgba(206, 206, 251, 0.1); /* rgba do --color-light-100 */
+    @apply bg-dark-100 rounded-2xl shadow-inner;
+    box-shadow: inset 0 2px 4px rgba(206, 206, 251, 0.1);
   }
 
   .movie-card img {
@@ -156,9 +149,6 @@
   }
 }
 
-/* =========================
-   🛠 Utilitários personalizados
-   ========================= */
 @layer utilities {
   .text-gradient {
     @apply bg-gradient-to-r from-[#D6C7FF] to-[#AB8BFF] bg-clip-text text-transparent;

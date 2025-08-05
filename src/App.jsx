@@ -4,6 +4,8 @@ import Search from "./components/Search";
 import Spinner from "./components/Spinner";
 import MovieCard from "./components/MovieCard";
 import { useDebounce } from "react-use";
+import { getTrendingMovies, updateSearchCount } from "./FirebaseConfig/FireStoreService";
+
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -23,6 +25,7 @@ function App() {
   const [movieList, setMovieList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [deBouncedSearchTerm, setDeBouncedSearchTerm] = useState("");
+  const [trendingMovies, setTrendingMovies] = useState([]);
 
   useDebounce(() => setDeBouncedSearchTerm(searchTerm), 500, [searchTerm]);
 
@@ -32,8 +35,10 @@ function App() {
 
     try {
       const endpoint = query
-        ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
-        : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
+        ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(
+            query
+          )}&language=pt-BR`
+        : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc&language=pt-BR`;
 
       const response = await fetch(endpoint, API_OPTIONS);
 
@@ -49,6 +54,12 @@ function App() {
         return;
       }
       setMovieList(data.results);
+
+      if (query && data.results.length > 0) {
+        updateSearchCount(query, data.results[0]).catch((e) => {
+          console.error("Erro no updateSearchCount:", e);
+        });
+      }
     } catch (error) {
       console.error(`Erro ao encontrar filmes: ${error}`);
       setErrorMessage("Erro ao encontrar filmes, por favor tente mais tarde");
@@ -57,9 +68,23 @@ function App() {
     }
   };
 
+  const loadTrendingMovies = async () => {
+    try {
+      const movies = await getTrendingMovies();
+
+      setTrendingMovies(movies);
+    } catch (error) {
+      console.error("Erro ao encontrar os filmes em alta:", error);
+    }
+  };
+
   useEffect(() => {
     fetchMovies(deBouncedSearchTerm);
   }, [deBouncedSearchTerm]);
+
+  useEffect(() => {
+    loadTrendingMovies();
+  }, []);
 
   return (
     <main>
@@ -74,8 +99,22 @@ function App() {
           <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </header>
 
+        {trendingMovies.length > 0 && (
+          <section className="trending">
+            <h2 className="h2">Mais pesquisados</h2>
+            <ul>
+              {trendingMovies.map((movie, index) => (
+                <li key={movie.$id}>
+                  <p>{index + 1}</p>
+                  <img src={movie.poster_url} alt={movie.title} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         <section className="all-movies">
-          <h2 className="h2 mt-[40px]">Todos filmes</h2>
+          <h2 className="h2">Todos filmes</h2>
 
           {isLoading ? (
             <Spinner />
