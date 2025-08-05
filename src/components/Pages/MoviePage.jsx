@@ -39,10 +39,10 @@ function MoviePage() {
 
         <div className="p-4 text-center flex flex-row justify-center text-purple-100">
           <img
-            className="rounded-lg h-auto max-w-[25rem] w-full md:w-auto self-start"
+            className="rounded-lg h-[35rem] max-w-[25rem] w-full md:w-auto self-start"
             src={
               image
-                ? `https://image.tmdb.org/t/p/w400/${image}`
+                ? `https://image.tmdb.org/t/p/original/${image}`
                 : "/no-movie.png"
             }
             alt={title}
