@@ -11,7 +11,6 @@ import {
   setDoc,
 } from "firebase/firestore";
 import { db } from "./FireBase";
-import { Query } from "appwrite";
 
 const searchesCollection = collection(db, "searches");
 
