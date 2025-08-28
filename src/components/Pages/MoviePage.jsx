@@ -12,34 +12,33 @@ function MoviePage() {
   const date = searchParams.get("release_date");
 
   return (
-    <div className="pattern w-full h-screen bg-center bg-purple-900 absolute z-0 flex justify-center items-center">
+    <div className="pattern w-full min-h-screen bg-center bg-purple-900 flex justify-center items-center px-4 py-6">
       <div
-        className="w-11/12 md:w-3/6 space-y-4 bg-dark-100 rounded-2xl shadow-inner h-auto justify-start flex flex-col items-center relative "
+        className="w-full max-w-5xl bg-dark-100 rounded-2xl shadow-inner h-auto flex flex-col items-center relative p-6"
         style={{ boxShadow: "inset 0 2px 4px rgba(206, 206, 251, 0.1)" }}
       >
         <div
-          className="w-11 h-11 bg-purple-900 bg-dark-100 absolute top-4 left-4 font-extrabold flex items-center justify-center rounded-xl"
+          className="w-11 h-11 bg-dark-100 absolute top-4 left-4 font-extrabold flex items-center justify-center rounded-xl"
           style={{
             boxShadow: "inset 0 4px 8px rgba(206, 206, 251, 0.15)",
           }}
         >
           <button
             onClick={() => navigate(-1)}
-            className="top-4 left-4 text-purple-200 font-extrabold"
+            className="text-purple-200 font-extrabold"
           >
             <ChevronLeftIcon size={28} />
           </button>
         </div>
 
-        <div className="mt-8">
-          <h1 className="mx-auto text-xl font-bold leading-tight tracking-[-1%] text-white sm:text-[64px] sm:leading-[76px]">
+        <div className="mt-12 text-center">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-white">
             {title}
           </h1>
         </div>
-
-        <div className="p-4 text-center flex flex-row justify-center text-purple-100">
+        <div className="p-4 flex flex-col md:flex-row justify-center items-center md:items-start text-purple-100 gap-6">
           <img
-            className="rounded-lg h-[35rem] max-w-[25rem] w-full md:w-auto self-start"
+            className="rounded-lg max-h-[28rem] w-full md:w-80 object-cover"
             src={
               image
                 ? `https://image.tmdb.org/t/p/original/${image}`
@@ -47,24 +46,28 @@ function MoviePage() {
             }
             alt={title}
           />
-          <div className="text-center md:text-left max-w-lg ml-6">
-            <h3 className="text-3xl mt-4 md:mt-0 text-center text-purple-200">
+
+          <div className="text-center md:text-left max-w-xl">
+            <h3 className="text-xl md:text-2xl font-semibold text-purple-200">
               Descrição do filme:
             </h3>
-            <p className="mt-4">
+            <p className="mt-4 text-sm md:text-base leading-relaxed">
               {overview ? overview : "Descrição indisponível."}
             </p>
-            <ul className="mt-4">
-              <li className="flex flex-row items-start p-1">
+            <ul className="mt-4 text-sm md:text-base space-y-2">
+              <li className="flex items-center justify-center md:justify-start">
                 Avaliação:{" "}
                 {rating && !isNaN(Number(rating))
                   ? Number(rating).toFixed(2)
-                  : "N/A"}
-                <img className="ml-1 " src="./star.svg" alt="Star Icon" />
+                  : "Indisponível."}
+                <img
+                  className="ml-1 w-4 h-4"
+                  src="./star.svg"
+                  alt="Star Icon"
+                />
               </li>
-
-              <li className="p-1">Língua: {language}</li>
-              <li className="p-1">
+              <li>Língua: {language}</li>
+              <li>
                 Data de Lançamento: {date ? date.split("-")[0] : "Indisponível"}
               </li>
             </ul>
