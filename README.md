@@ -1,12 +1,26 @@
-# React + Vite
+# React Movies
+    Aplicação web desenvolvida em *React* com *Vite*, integrada ao *Firebase* e que consome a API do **TMDB (The Movie Database)**.  
+O sistema permite pesquisar por filmes e visualizar detalhes como sinopse, avaliação, idioma e data de lançamento.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## Tecnologias utilizadas
+- [React](https://react.dev/) — Biblioteca para criação da interface
+- [Vite](https://vitejs.dev/) — Ferramenta de build e dev server
+- [TMDB API](https://www.themoviedb.org/documentation/api) — Base de dados de filmes e séries
+- [Firebase](https://firebase.google.com/) — Backend para autenticação e armazenamento
+- [TailwindCSS](https://tailwindcss.com/) — Estilização responsiva
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Funcionalidades
+- Pesquisa de filmes pelo título  
+- Exibição de capa, descrição, nota, idioma e data de lançamento  
+- Layout responsivo para diferentes dispositivos  
+- Integração com Firebase para autenticação/armazenamento (quando aplicável)  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🌐 Visualize o projeto:
+
+**[Ver Projeto Online](https://react-movies-beige-ten.vercel.app/)**
